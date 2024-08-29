@@ -5,13 +5,8 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   server: {
-    // proxy: {
-    //   '/api': {  // Ajusta esto a tu endpoint real
-    //     target: 'https://apiun.controlsoftwarepro.com',  // Cambia esto a la URL de tu backend
-    //     changeOrigin: true,  // Cambia el origen de la solicitud para coincidir con el servidor de destino
-    //     secure: true,  // Configura si el proxy debe aceptar certificados SSL auto-firmados
-    //     rewrite: (path) => path.replace(/^\https://apiun.controlsoftwarepro.com, ''),  // Reescribe la ruta de la solicitud si es necesario
-    //   },
-    // },
+    host: '185.139.1.59', // Tu dirección IP específica
+    port: 5374,           // El puerto que desees
+
   },
 })
