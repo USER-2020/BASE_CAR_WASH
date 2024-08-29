@@ -110,7 +110,7 @@ const AdminDashboard = () => {
                 </header>
 
 
-                {reservations && reservations.length > 0 ? ( // Verificar si hay reservas antes de mostrar el componente
+                {reservations.length > 0 ? ( // Verificar si hay reservas antes de mostrar el componente
                     <ReservationTable reservations={reservations} onEdit={handleEdit} onDelete={handleDelete} onUpdate={listAllReservations} />
                 ) : (
                     <p className="text-center text-gray-300">No reservations available.</p>
