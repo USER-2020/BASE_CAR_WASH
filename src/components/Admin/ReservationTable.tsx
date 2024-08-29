@@ -15,7 +15,7 @@ const ReservationTable: React.FC<ReservationTableProps> = ({ reservations, onEdi
     // Función para actualizar el estado de la reserva
     const handleUpdateStatus = (id: number) => {
         console.log("Este es el id de la reservacion", id);
-        axios.post(`api/reservations/${id}/pay`, {}, {
+        axios.post(`https://apiun.controlsoftwarepro.com/reservations/${id}/pay`, {}, {
             headers: {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${localStorage.getItem("token")}`,

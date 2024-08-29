@@ -55,7 +55,7 @@ const AdminDashboard = () => {
         };
 
         // Hacer la llamada a la API para guardar los cambios
-        axios.put(`/api/reservations/${updatedReservation.reservation.id}`, reservationUpdateData, {  // Utiliza el id de la reserva
+        axios.put(`https://apiun.controlsoftwarepro.com/reservations/${updatedReservation.reservation.id}`, reservationUpdateData, {  // Utiliza el id de la reserva
             headers: {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -78,7 +78,7 @@ const AdminDashboard = () => {
     };
 
     const handleDelete = (id: number) => {
-        axios.delete(`/api/reservations/${id}`, {
+        axios.delete(`https://apiun.controlsoftwarepro.com/reservations/${id}`, {
             headers: {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${localStorage.getItem("token")}`,
