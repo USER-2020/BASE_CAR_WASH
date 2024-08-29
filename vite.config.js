@@ -9,7 +9,7 @@ export default defineConfig({
       '/api': {  // Ajusta esto a tu endpoint real
         target: 'https://apiun.controlsoftwarepro.com',  // Cambia esto a la URL de tu backend
         changeOrigin: true,  // Cambia el origen de la solicitud para coincidir con el servidor de destino
-        secure: false,  // Configura si el proxy debe aceptar certificados SSL auto-firmados
+        secure: true,  // Configura si el proxy debe aceptar certificados SSL auto-firmados
         rewrite: (path) => path.replace(/^\/api/, ''),  // Reescribe la ruta de la solicitud si es necesario
       },
     },
