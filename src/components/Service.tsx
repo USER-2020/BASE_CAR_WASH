@@ -51,7 +51,7 @@ const Service = ({ service }) => {
 
         // Realizar la solicitud POST utilizando Axios con el proxy de Vite
         axios.post(
-            '/api/reservations', // Usa el prefijo /api que será redirigido por el proxy de Vite
+            'https://apiun.controlsoftwarepro.com/reservations', // Usa el prefijo /api que será redirigido por el proxy de Vite
             reservation,
             {
                 headers: {

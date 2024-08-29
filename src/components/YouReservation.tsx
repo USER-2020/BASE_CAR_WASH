@@ -15,7 +15,7 @@ const YourReservations = () => {
     // Función para eliminar una reserva
     const handleDelete = (id: number) => {
         axios.delete(
-            `/api/reservations/${id}`, // Usa el prefijo /api que será redirigido por el proxy de Vite
+            `https://apiun.controlsoftwarepro.com/reservations/${id}`, // Usa el prefijo /api que será redirigido por el proxy de Vite
             {
                 headers: {
                     "Content-Type": "application/json",
@@ -63,7 +63,7 @@ const YourReservations = () => {
         };
 
         // Hacer la llamada a la API para guardar los cambios
-        axios.put(`/api/reservations/${updatedReservation.reservation.id}`, reservationUpdateData, {  // Utiliza el id de la reserva
+        axios.put(`https://apiun.controlsoftwarepro.com/reservations/${updatedReservation.reservation.id}`, reservationUpdateData, {  // Utiliza el id de la reserva
             headers: {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -89,7 +89,7 @@ const YourReservations = () => {
     const listReservations = () => {
         const userId = localStorage.getItem('userId') ?? '';
         axios.get(
-            `/api/reservations/user/${userId}`, // Usa el prefijo /api que será redirigido por el proxy de Vite
+            `https://apiun.controlsoftwarepro.com/reservations/user/${userId}`, // Usa el prefijo /api que será redirigido por el proxy de Vite
             {
                 headers: {
                     "Content-Type": "application/json",
