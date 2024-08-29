@@ -51,14 +51,14 @@ const Service = ({ service }) => {
 
         // Realizar la solicitud POST utilizando Axios con el proxy de Vite
         axios.post(
-            'https://apiun.controlsoftwarepro.com/reservations', // Usa el prefijo /api que será redirigido por el proxy de Vite
+            `${urlBase}/reservations`, // Usa el prefijo /api que será redirigido por el proxy de Vite
             reservation,
             {
                 headers: {
                     "Content-Type": "application/json",
                     Authorization: `Bearer ${token}`, // Token de autorización
                 },
-                withCredentials: true, // Enviar cookies y otras credenciales con la solicitud
+                
             }
         )
             .then((response) => {

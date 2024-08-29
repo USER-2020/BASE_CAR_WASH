@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import { ReservationFullInterface } from '../../interfaces/reservationFull';
+import { urlBase } from '../../defaultValues';
 
 interface ReservationTableProps {
     reservations: ReservationFullInterface[];
@@ -15,7 +16,7 @@ const ReservationTable: React.FC<ReservationTableProps> = ({ reservations, onEdi
     // Función para actualizar el estado de la reserva
     const handleUpdateStatus = (id: number) => {
         console.log("Este es el id de la reservacion", id);
-        axios.post(`https://apiun.controlsoftwarepro.com/reservations/${id}/pay`, {}, {
+        axios.post(`${urlBase}/reservations/${id}/pay`, {}, {
             headers: {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${localStorage.getItem("token")}`,

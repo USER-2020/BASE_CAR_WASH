@@ -6,6 +6,7 @@ import { ReservationFullInterface } from '../../interfaces/reservationFull';
 import Navbar from '../Navbar';
 import EditReservationModal from '../modals/EditReservationModal';
 import { ReservationUpdateInterface } from '../../interfaces/reservationInterface';
+import { urlBase } from '../../defaultValues';
 
 
 
@@ -16,12 +17,12 @@ const AdminDashboard = () => {
 
     // Función para listar todas las reservas
     const listAllReservations = () => {
-        axios.get('https://apiun.controlsoftwarepro.com/reservations', {
+        axios.get(`${urlBase}/reservations`, {
             headers: {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${localStorage.getItem("token")}`,
             },
-            withCredentials: true,
+            
         })
             .then(response => {
                 setReservations(response.data.data);
@@ -55,7 +56,7 @@ const AdminDashboard = () => {
         };
 
         // Hacer la llamada a la API para guardar los cambios
-        axios.put(`https://apiun.controlsoftwarepro.com/reservations/${updatedReservation.reservation.id}`, reservationUpdateData, {  // Utiliza el id de la reserva
+        axios.put(`${urlBase}/reservations/${updatedReservation.reservation.id}`, reservationUpdateData, {  // Utiliza el id de la reserva
             headers: {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -78,12 +79,12 @@ const AdminDashboard = () => {
     };
 
     const handleDelete = (id: number) => {
-        axios.delete(`https://apiun.controlsoftwarepro.com/reservations/${id}`, {
+        axios.delete(`${urlBase}/reservations/${id}`, {
             headers: {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${localStorage.getItem("token")}`,
             },
-            withCredentials: true,
+            
         })
             .then(() => {
                 toast.success('Reserva eliminada correctamente.');

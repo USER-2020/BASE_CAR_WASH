@@ -5,6 +5,7 @@ import toast from 'react-hot-toast';
 import { ReservationFullInterface } from '../interfaces/reservationFull';
 import EditReservationModal from './modals/EditReservationModal';
 import { ReservationUpdateInterface } from '../interfaces/reservationInterface';
+import { urlBase } from '../defaultValues';
 
 const YourReservations = () => {
     // Estado para almacenar las reservas
@@ -15,13 +16,12 @@ const YourReservations = () => {
     // Función para eliminar una reserva
     const handleDelete = (id: number) => {
         axios.delete(
-            `https://apiun.controlsoftwarepro.com/reservations/${id}`, // Usa el prefijo /api que será redirigido por el proxy de Vite
+            `${urlBase}/reservations/${id}`, // Usa el prefijo /api que será redirigido por el proxy de Vite
             {
                 headers: {
                     "Content-Type": "application/json",
                     Authorization: `Bearer ${localStorage.getItem("token")}`, // Token de autorización
                 },
-                withCredentials: true, // Enviar cookies y otras credenciales con la solicitud
             }
         )
             .then((response) => {
@@ -63,7 +63,7 @@ const YourReservations = () => {
         };
 
         // Hacer la llamada a la API para guardar los cambios
-        axios.put(`https://apiun.controlsoftwarepro.com/reservations/${updatedReservation.reservation.id}`, reservationUpdateData, {  // Utiliza el id de la reserva
+        axios.put(`${urlBase}/reservations/${updatedReservation.reservation.id}`, reservationUpdateData, {  // Utiliza el id de la reserva
             headers: {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -89,13 +89,13 @@ const YourReservations = () => {
     const listReservations = () => {
         const userId = localStorage.getItem('userId') ?? '';
         axios.get(
-            `https://apiun.controlsoftwarepro.com/reservations/user/${userId}`, // Usa el prefijo /api que será redirigido por el proxy de Vite
+            `${urlBase}/reservations/user/${userId}`, // Usa el prefijo /api que será redirigido por el proxy de Vite
             {
                 headers: {
                     "Content-Type": "application/json",
                     Authorization: `Bearer ${localStorage.getItem("token")}`, // Token de autorización
                 },
-                withCredentials: true, // Enviar cookies y otras credenciales con la solicitud
+                // Enviar cookies y otras credenciales con la solicitud
             }
         )
             .then((response) => {
